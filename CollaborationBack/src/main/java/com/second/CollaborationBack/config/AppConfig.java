@@ -16,12 +16,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.second.CollaborationBack.DAO.BlogDAOImpl;
+import com.second.CollaborationBack.DAO.ChatDAOImpl;
 import com.second.CollaborationBack.DAO.CommentDAOImpl;
 import com.second.CollaborationBack.DAO.ForumDAOImpl;
 import com.second.CollaborationBack.DAO.FriendListDAOImpl;
 import com.second.CollaborationBack.DAO.JobDAOImpl;
 import com.second.CollaborationBack.DAO.UserDAOImpl;
 import com.second.CollaborationBack.model.Blog;
+import com.second.CollaborationBack.model.Chat;
 import com.second.CollaborationBack.model.Comment;
 import com.second.CollaborationBack.model.Forum;
 import com.second.CollaborationBack.model.FriendList;
@@ -93,6 +95,7 @@ public class AppConfig {
 		sessionBuilder.addAnnotatedClass(Comment.class);
 		sessionBuilder.addAnnotatedClass(FriendList.class);
 		sessionBuilder.addAnnotatedClass(Jobs.class);
+		sessionBuilder.addAnnotatedClass(Chat.class);
 		return sessionBuilder.buildSessionFactory();
 		}
 	
@@ -133,5 +136,11 @@ public class AppConfig {
 	@Bean(name="jobs")
 	public JobDAOImpl getJobDAOImpl(SessionFactory sessionFactory){
 		return new JobDAOImpl(sessionFactory);
+	}
+	
+	@Autowired(required=true)
+	@Bean(name="chat")
+	public ChatDAOImpl getChatDAOImpl(SessionFactory sessionFactory){
+		return new ChatDAOImpl(sessionFactory);
 	}
 }
