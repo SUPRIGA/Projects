@@ -5,7 +5,7 @@ angular.module('myApp').controller('ForumController', ['$scope','$location','$ro
 	var self = this;
 	self.forum={fid:'',forumTitle:'',forumContent:'',userId:'',userName:'',creationdate:''};
     self.forums=[];
-    
+  
     self.submit = submit;
     self.remove = remove;
     self.get = get;
@@ -56,7 +56,7 @@ angular.module('myApp').controller('ForumController', ['$scope','$location','$ro
     }
     function remove(id){
         console.log('id to be deleted', id);
-        if(self.forum.forumId === id) {//clean form if the user to be deleted is shown there.
+        if(self.forum.fid === id) {//clean form if the user to be deleted is shown there.
             reset();
         }
         deleteforum(id);
